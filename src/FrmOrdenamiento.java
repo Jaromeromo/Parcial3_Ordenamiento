@@ -1,5 +1,4 @@
 import java.awt.BorderLayout;
-import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -63,7 +62,6 @@ public class FrmOrdenamiento extends JFrame {
 
         btnBuscar.setIcon(new ImageIcon(getClass().getResource("/iconos/Buscar.png")));
         btnBuscar.setToolTipText("Buscar");
-        btnBuscar.addActionListener(evt -> btnBuscar());
         tbOrdenamiento.add(btnBuscar);
         tbOrdenamiento.add(txtBuscar);
 
@@ -104,19 +102,4 @@ public class FrmOrdenamiento extends JFrame {
         }
     }
 
-    private void btnBuscar() {
-        String query = txtBuscar.getText().toLowerCase();
-        ArrayList<Documento> resultados = new ArrayList<>();
-
-        for (Documento doc : Documento.documentos) {
-            if (doc.getNombreCompleto().toLowerCase().contains(query) || 
-                doc.getDocumento().toLowerCase().contains(query)) {
-                resultados.add(doc);
-            }
-        }
-
-        // Mostrar los resultados en la tabla
-        Documento.documentos = resultados; // Actualizar la lista de documentos
-        Documento.mostrarDatos(tblDocumentos); // Mostrar los resultados
-    }
 }
